@@ -66,7 +66,7 @@ class Result: #for user commands and its result
                 print(f"Error: Invalid input. Please Try a valid Input. \nSuch as 1 to {len(self.inputs)} for moves , ? for help and 0 for exit")
 
     def result(self,user_cmd,cpu_turn):
-        distance = (cpu_turn-user_cmd)% len(self.inputs)
+        distance = (cpu_turn-user_cmd) % len(self.inputs)
         if distance == 0:
             return "It's a draw."
         elif distance<= len(self.inputs)//2:
@@ -94,8 +94,8 @@ class Play: #main menu classs
         print("HMAC:",self.cal_hmac)
         self.move_menu()
         user_cmd = Result(self.inputs, self.key).user_cmd()
-        # cpu_turn = random.randint(1, len(self.inputs))
-        cpu_turn = 7
+        cpu_turn = random.randint(1, len(self.inputs))
+        # cpu_turn = 7
         print("Your Move:",self.inputs[user_cmd - 1])
         print("Computer Move:", self.inputs[cpu_turn-1])
         result = Result(self.inputs, self.key).result(user_cmd,cpu_turn)
