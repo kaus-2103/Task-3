@@ -80,7 +80,8 @@ class Play: #main menu classs
         self.inputs = inputs
         self.key = Generator.gen_key()
         Gen = Generator(self.inputs)
-        self.cal_hmac=Gen.cal_hmac(random.randint(1, len(self.inputs)),self.key)
+        self.output=random.randint(1, len(self.inputs))
+        self.cal_hmac=Gen.cal_hmac(self.output,self.key)
 
 
     def move_menu(self):
@@ -94,7 +95,7 @@ class Play: #main menu classs
         print("HMAC:",self.cal_hmac)
         self.move_menu()
         user_cmd = Result(self.inputs, self.key).user_cmd()
-        cpu_turn = random.randint(1, len(self.inputs))
+        cpu_turn = self.output
         # cpu_turn = 7
         print("Your Move:",self.inputs[user_cmd - 1])
         print("Computer Move:", self.inputs[cpu_turn-1])
